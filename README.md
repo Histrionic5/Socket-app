@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Socket
 
 A new Flutter project.
