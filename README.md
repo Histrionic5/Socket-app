@@ -25,7 +25,7 @@ This app is under development and may contain bugs. Features and UI may change a
 ---
 
 ## Description
-MyWife App is a Flutter-based mobile application featuring offline login, a secure local database, and online syncing via Firebase. Users can switch themes, manage notification settings, track login activity, and use a role-based dashboard. This project is designed for learning, demonstration, and portfolio purposes.
+A smart socket/energy management app that monitors voltage, power, and energy usage from various sockets, alerts users to overuse or excess, allows remote safe shutdown of individual sockets, and provides insights on how to save power effectively.
 
 ---
 
