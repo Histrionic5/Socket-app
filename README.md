@@ -43,10 +43,9 @@ MyWife App is a Flutter-based mobile application featuring offline login, a secu
 ---
 
 ## Screenshots
-*(Add screenshots here to showcase your app UI)*  
-![Login Page](link-to-login-screenshot)  
-![Dashboard](link-to-dashboard-screenshot)  
 
+![Login Page](screenshots/login.jpeg)  
+![Dashboard](screenshots/Dashboard.jpeg)
 ---
 
 ## Technologies Used
