@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79574877269",
+    "project_id": "my-wife-9f0fb",
+    "storage_bucket": "my-wife-9f0fb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79574877269:android:b6934a627b222fc2a200dc",
+        "android_client_info": {
+          "package_name": "com.example.my_wife"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1iHNJPDZiRUw2HjWHIEA5PYyDO0ZEgjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
