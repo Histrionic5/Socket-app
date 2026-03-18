@@ -5,21 +5,24 @@ import 'package:local_auth/local_auth.dart';
 import 'package:crypto/crypto.dart';
 import 'dart:convert';
 import 'Dashboard.dart';
-import 'package:my_wife/Database/LocalDatabase.dart';
+import 'LocalDatabase.dart';
 import 'main.dart';
 
 class LoginPage extends StatefulWidget {
-  final bool isDarkMode;
-  final Function(bool) onThemeChanged;
+final bool isDarkMode;
+final Function(bool) onThemeChanged;
+final VoidCallback? onLoginSuccess; // Add this
 
-  const LoginPage({
-    Key? key,
-    required this.isDarkMode,
-    required this.onThemeChanged,
-  }) : super(key: key);
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
+const LoginPage({
+Key? key,
+required this.isDarkMode,
+required this.onThemeChanged,
+this.onLoginSuccess, // Add this
+}) : super(key: key);
+
+@override
+State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -36,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _fingerprintEnabled = false;
   String _errorMessage = '';
 
+
   @override
   void initState() {
     super.initState();
@@ -45,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   String _hashPassword(String password) {
     final bytes = utf8.encode(password);
     return sha256.convert(bytes).toString();
+
   }
 
   Future<void> _loadFingerprintPreference() async {
@@ -82,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
         _showTempError("Enter username/email and password");
         return;
       }
+
 
       // Offline login first
       final offlineSuccess = await _loginOffline(username, password);
@@ -137,6 +143,7 @@ class _LoginPageState extends State<LoginPage> {
         _showTempError("Enter username and password");
         return;
       }
+
 
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)

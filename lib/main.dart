@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'LocalDatabase.dart';
 import 'firebase_options.dart';
 import 'loginPage.dart';
 
-// Modern color palette
+// ---------------------------
+// Color Palette
+// ---------------------------
 const Color darkBg = Color(0xFF0f172a);
 const Color cardBg = Color(0xFF1f2937);
 const Color borderColor = Color(0xFF374151);
@@ -14,18 +18,60 @@ const Color dangerRed = Color(0xFFef4444);
 const Color textPrimary = Color(0xFFe5e7eb);
 const Color textSecondary = Color(0xFF9ca3af);
 
-/// ---------------------------------------------
-///  MAIN — Initialize Firebase here
-/// ---------------------------------------------
-void main() async {
+// ---------------------------
+// Firebase Realtime DB
+// ---------------------------
+late final DatabaseReference db;
+
+// ---------------------------
+// Flutter App Main
+// ---------------------------
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  db = FirebaseDatabase.instance.ref();
+
   runApp(const IntelligentSocketApp());
 }
 
+// ---------------------------
+// Firebase Helpers
+// ---------------------------
+Future<Map<String, dynamic>?> getSocketFromFirebase(int id) async {
+  final snapshot = await db.child("sockets/$id").get();
+  if (snapshot.exists) {
+    return Map<String, dynamic>.from(snapshot.value as Map);
+  }
+  return null;
+}
 
+Future<void> turnOnSocket(int id) async {
+  await db.child("sockets/$id/state").set(true);
+}
+
+void listenToSockets(Function(Map<String, dynamic>) onUpdate) {
+  db.child("sockets").onValue.listen((event) {
+    if (event.snapshot.exists) {
+      final data = Map<String, dynamic>.from(event.snapshot.value as Map);
+      onUpdate(data);
+    }
+  });
+}
+
+Future<void> syncAllSockets() async {
+  final sockets = await LocalDatabase.getAllSockets();
+  for (var socket in sockets) {
+    await db.child("sockets/${socket['id']}").set(socket);
+  }
+}
+
+// ---------------------------
+// Flutter App
+// ---------------------------
 class IntelligentSocketApp extends StatefulWidget {
   const IntelligentSocketApp({Key? key}) : super(key: key);
 
@@ -34,33 +80,44 @@ class IntelligentSocketApp extends StatefulWidget {
 }
 
 class _IntelligentSocketAppState extends State<IntelligentSocketApp> {
-  bool _isDarkMode = false; // false = dark, true = light
+  bool _isDarkMode = false;
+  Map<String, dynamic> socketData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    // Listen for live updates from Firebase
+    listenToSockets((data) {
+      setState(() => socketData = data);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smart Socket',
       debugShowCheckedModeBanner: false,
-
-      // THEMES
       theme: ThemeData.light(),
       darkTheme: _buildDarkTheme(),
-
-      // SWITCH THEME MODE
       themeMode: _isDarkMode ? ThemeMode.light : ThemeMode.dark,
 
+      // ----------------------
+      // Use your LoginPage here
+      // ----------------------
       home: LoginPage(
         isDarkMode: _isDarkMode,
         onThemeChanged: (isLightMode) {
           setState(() => _isDarkMode = isLightMode);
         },
+
       ),
     );
   }
 
-  /// ---------------------------------------------
-  /// Custom Dark Theme
-  /// ---------------------------------------------
+  void toggleTheme() {
+    setState(() => _isDarkMode = !_isDarkMode);
+  }
+
   ThemeData _buildDarkTheme() {
     return ThemeData(
       useMaterial3: true,
@@ -75,41 +132,17 @@ class _IntelligentSocketAppState extends State<IntelligentSocketApp> {
       ),
       textTheme: const TextTheme(
         headlineLarge: TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          color: textPrimary,
-          letterSpacing: -0.5,
-        ),
-        headlineSmall: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          color: textPrimary,
-        ),
-        titleMedium: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: textPrimary,
-        ),
-        bodyMedium: TextStyle(
-          fontSize: 16,
-          color: textPrimary,
-          height: 1.5,
-        ),
-        bodySmall: TextStyle(
-          fontSize: 14,
-          color: textSecondary,
-          height: 1.5,
-        ),
+            fontSize: 28, fontWeight: FontWeight.bold, color: textPrimary),
+        bodyMedium: TextStyle(fontSize: 16, color: textPrimary, height: 1.5),
+        bodySmall: TextStyle(fontSize: 14, color: textSecondary, height: 1.5),
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: cardBg,
         elevation: 0,
-        centerTitle: false,
         titleTextStyle: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: textPrimary,
-          letterSpacing: -0.5,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -119,16 +152,59 @@ class _IntelligentSocketAppState extends State<IntelligentSocketApp> {
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: borderColor),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: borderColor),
+      ),
+    );
+  }
+}
+
+// ---------------------------
+// Socket Dashboard
+// ---------------------------
+class SocketDashboard extends StatelessWidget {
+  final Map<String, dynamic> socketData;
+  final bool isDarkMode;
+  final VoidCallback toggleTheme;
+
+  const SocketDashboard(this.socketData, this.isDarkMode, this.toggleTheme, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final socketStatus = socketData['socket_status'] ?? false;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Smart Socket Dashboard'),
+        actions: [
+          IconButton(
+            icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
+            onPressed: toggleTheme,
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Socket is ${socketStatus ? "ON" : "OFF"}', style: const TextStyle(fontSize: 20)),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () async {
+                await db.child('socket_status').set(!socketStatus);
+              },
+              child: const Text('Toggle Socket'),
+            ),
+            const SizedBox(height: 20),
+            Text('Voltage: ${socketData['voltage_reading'] ?? 0.0} V'),
+            Text('Current: ${socketData['current_reading'] ?? 0.0} A'),
+            Text('Power: ${socketData['power_reading'] ?? 0.0} W'),
+            Text('Energy: ${socketData['energy_consumed'] ?? 0.0} kWh'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: syncAllSockets,
+              child: const Text('Sync Local DB to Firebase'),
+            ),
+          ],
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: primaryAccent, width: 2),
-        ),
-        contentPadding:
-        const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       ),
     );
   }

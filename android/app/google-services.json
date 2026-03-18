@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "79574877269",
+    "firebase_url": "https://my-wife-9f0fb-default-rtdb.firebaseio.com",
     "project_id": "my-wife-9f0fb",
     "storage_bucket": "my-wife-9f0fb.firebasestorage.app"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.example.my_wife"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "79574877269-l09qmgb25q3a879o40jmiop0pi3k8egk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC1iHNJPDZiRUw2HjWHIEA5PYyDO0ZEgjA"
@@ -20,7 +26,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79574877269-l09qmgb25q3a879o40jmiop0pi3k8egk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "79574877269-t32mvoep8dsovfg9q1dpuo9isgqhe9ko.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myWife"
+              }
+            }
+          ]
         }
       }
     }

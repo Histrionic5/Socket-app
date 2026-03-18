@@ -1,4 +1,6 @@
+<<<<<<< HEAD
 # Socket
+>>>>>>> 2c22662 (Refactor local database, update Flutter + ESP32 Firebase integration)
 
 A new Flutter project.
 
@@ -26,7 +28,10 @@ This app is under development and may contain bugs. Features and UI may change a
 
 ## Description
 A smart socket/energy management app that monitors voltage, power, and energy usage from various sockets, alerts users to overuse or excess, allows remote safe shutdown of individual sockets, and provides insights on how to save power effectively.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c22662 (Refactor local database, update Flutter + ESP32 Firebase integration)
 ---
 
 ## Features

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Socket.dart';
 import 'Socket_data.dart';
 import 'main.dart';
-import 'package:my_wife/Database/LocalDatabase.dart';
+import 'package:my_wife/LocalDatabase.dart';
 import 'Settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';

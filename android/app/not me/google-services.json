@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "950704044811",
+    "firebase_url": "https://iot-smart-socket-default-rtdb.firebaseio.com",
+    "project_id": "iot-smart-socket",
+    "storage_bucket": "iot-smart-socket.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950704044811:android:30b9bb279256170908800e",
+        "android_client_info": {
+          "package_name": "com.example.my_wife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950704044811-9i88l6fi2jvf3cpqra4liu2vv0soj4s0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPA23KTgB1l5kW61tuTWEDRWUp6aOCCQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950704044811-9i88l6fi2jvf3cpqra4liu2vv0soj4s0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950704044811-343dpgp6e1tg0mi4sclp7mthf6l6sq4g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smartSocketFinal"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950704044811:android:2ec0d36c6d64e11d08800e",
+        "android_client_info": {
+          "package_name": "com.example.smart_socket_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950704044811-9i88l6fi2jvf3cpqra4liu2vv0soj4s0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPA23KTgB1l5kW61tuTWEDRWUp6aOCCQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950704044811-9i88l6fi2jvf3cpqra4liu2vv0soj4s0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950704044811-343dpgp6e1tg0mi4sclp7mthf6l6sq4g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smartSocketFinal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

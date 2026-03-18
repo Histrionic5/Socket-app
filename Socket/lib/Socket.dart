@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'Socket_data.dart';
-import 'package:my_wife/Database/LocalDatabase.dart';
+import 'package:my_wife/LocalDatabase.dart';
 
 typedef SocketCallback = void Function(SocketData);
 

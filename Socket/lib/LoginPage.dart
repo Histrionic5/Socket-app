@@ -5,7 +5,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:crypto/crypto.dart';
 import 'dart:convert';
 import 'Dashboard.dart';
-import 'package:my_wife/Database/LocalDatabase.dart';
+import 'package:my_wife/LocalDatabase.dart';
 import 'main.dart';
 
 class LoginPage extends StatefulWidget {

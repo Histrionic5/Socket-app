@@ -46,6 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '79574877269',
     projectId: 'my-wife-9f0fb',
     authDomain: 'my-wife-9f0fb.firebaseapp.com',
+    databaseURL: 'https://my-wife-9f0fb-default-rtdb.firebaseio.com',
     storageBucket: 'my-wife-9f0fb.firebasestorage.app',
     measurementId: 'G-K95THZ5FLD',
   );
@@ -55,6 +56,7 @@ class DefaultFirebaseOptions {
     appId: '1:79574877269:android:b6934a627b222fc2a200dc',
     messagingSenderId: '79574877269',
     projectId: 'my-wife-9f0fb',
+    databaseURL: 'https://my-wife-9f0fb-default-rtdb.firebaseio.com',
     storageBucket: 'my-wife-9f0fb.firebasestorage.app',
   );
 
@@ -63,7 +65,9 @@ class DefaultFirebaseOptions {
     appId: '1:79574877269:ios:6667ded9c7483765a200dc',
     messagingSenderId: '79574877269',
     projectId: 'my-wife-9f0fb',
+    databaseURL: 'https://my-wife-9f0fb-default-rtdb.firebaseio.com',
     storageBucket: 'my-wife-9f0fb.firebasestorage.app',
+    iosClientId: '79574877269-t32mvoep8dsovfg9q1dpuo9isgqhe9ko.apps.googleusercontent.com',
     iosBundleId: 'com.example.myWife',
   );
 
@@ -72,7 +76,9 @@ class DefaultFirebaseOptions {
     appId: '1:79574877269:ios:6667ded9c7483765a200dc',
     messagingSenderId: '79574877269',
     projectId: 'my-wife-9f0fb',
+    databaseURL: 'https://my-wife-9f0fb-default-rtdb.firebaseio.com',
     storageBucket: 'my-wife-9f0fb.firebasestorage.app',
+    iosClientId: '79574877269-t32mvoep8dsovfg9q1dpuo9isgqhe9ko.apps.googleusercontent.com',
     iosBundleId: 'com.example.myWife',
   );
 
@@ -82,7 +88,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '79574877269',
     projectId: 'my-wife-9f0fb',
     authDomain: 'my-wife-9f0fb.firebaseapp.com',
+    databaseURL: 'https://my-wife-9f0fb-default-rtdb.firebaseio.com',
     storageBucket: 'my-wife-9f0fb.firebasestorage.app',
     measurementId: 'G-CV9SEN20G8',
   );
+
 }

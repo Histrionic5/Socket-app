@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Socket.dart';
 import 'Socket_data.dart';
 import 'main.dart';
-import 'package:my_wife/Database/LocalDatabase.dart';
+import 'LocalDatabase.dart';
 import 'Settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
@@ -50,10 +50,13 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
+
     _socket = Socket(
       wsUrl: _wsUrl,
+      firebasePath: 'sockets/socket1',  // <- add this line
       onDataChanged: _onSocketDataChanged,
     );
+
     _socket.connect();
 
     _initNotifications();
