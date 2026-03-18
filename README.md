@@ -49,7 +49,15 @@ A smart socket/energy management app that monitors voltage, power, and energy us
 ## Screenshots
 
 ![Login Page](screenshots/Login.jpeg)  
-![Dashboard](screenshots/Dashboard.jpeg)
+
+### Disconnected Version
+![Dashboard Disconnected](screenshots/Dashboard.jpeg)
+
+### Connected Version
+![Dashboard Connected](screenshots/Dashboard(Connected).jpeg)
+
+
+
 ---
 
 ## Technologies Used
