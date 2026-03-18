@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-# Socket
->>>>>>> 2c22662 (Refactor local database, update Flutter + ESP32 Firebase integration)
+
+# Socket-app
 
 A new Flutter project.
 
@@ -18,21 +17,20 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 =======
 # Socket-app
-A work-in-progress Flutter app featuring offline login, secure local database, and a customizable user dashboard. The app includes theme switching, notification settings, and login auditing, designed for learning and demonstration purposes.
+
+A smart socket/energy management app that monitors voltage, power, and energy usage from various sockets, alerts users to overuse or excess, allows remote safe shutdown of individual sockets, and provides insights on how to save power effectively.
+
 # Socket App – Flutter Mobile Application
 
-⚠️ **Work in Progress**  
+**Work in Progress**  
 This app is under development and may contain bugs. Features and UI may change as development continues.
 
 ---
 
 ## Description
-A smart socket/energy management app that monitors voltage, power, and energy usage from various sockets, alerts users to overuse or excess, allows remote safe shutdown of individual sockets, and provides insights on how to save power effectively.
-<<<<<<< HEAD
+A work-in-progress Flutter app featuring offline login, secure local database, and a customizable user dashboard. The app includes theme switching, notification settings, and login auditing, designed for learning and demonstration purposes.
 
 =======
->>>>>>> 2c22662 (Refactor local database, update Flutter + ESP32 Firebase integration)
----
 
 ## Features
 - Offline login with email or username
